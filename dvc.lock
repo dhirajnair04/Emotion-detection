@@ -5,28 +5,28 @@ stages:
     deps:
     - path: src\data\data_ingestion.py
       hash: md5
-      md5: 4e33f45a6d99e306a55d18f9cad379f1
-      size: 1129
+      md5: 8fa92cccd6df41b1d7f6ccc47ddb5475
+      size: 1286
     outs:
     - path: data\raw\test_data.csv
       hash: md5
-      md5: 35b06980c6e00772e6bf783ae10ab9b7
-      size: 164174
+      md5: 00e92fbd32276319d5b2efb0c047cd51
+      size: 248475
     - path: data\raw\train_data.csv
       hash: md5
-      md5: a2aa88dfae8af3dc60e6e24a09304f4e
-      size: 663799
+      md5: 0b51c9a20421c5215654dc30eb0cb163
+      size: 579498
   data_preprocessing:
     cmd: python src\data\data_preprocessing.py
     deps:
     - path: data\raw\test_data.csv
       hash: md5
-      md5: 35b06980c6e00772e6bf783ae10ab9b7
-      size: 164174
+      md5: 00e92fbd32276319d5b2efb0c047cd51
+      size: 248475
     - path: data\raw\train_data.csv
       hash: md5
-      md5: a2aa88dfae8af3dc60e6e24a09304f4e
-      size: 663799
+      md5: 0b51c9a20421c5215654dc30eb0cb163
+      size: 579498
     - path: src\data\data_preprocessing.py
       hash: md5
       md5: 229addb9d7b865fab28ed22b742b15df
@@ -34,69 +34,69 @@ stages:
     outs:
     - path: data\processed\test_data.csv
       hash: md5
-      md5: 870497ce96052cddf73c1a13036432ef
-      size: 112656
+      md5: 77e002c6632d604c0bfd70d9b845847e
+      size: 169992
     - path: data\processed\train_data.csv
       hash: md5
-      md5: 637f3709b44460480d998aff20ae7a5e
-      size: 453554
+      md5: c91070b226cb06f9b54abdf85ebb2cd4
+      size: 396218
   feature_engineering:
     cmd: python src\features\features.py
     deps:
     - path: data\processed\test_data.csv
       hash: md5
-      md5: 870497ce96052cddf73c1a13036432ef
-      size: 112656
+      md5: 77e002c6632d604c0bfd70d9b845847e
+      size: 169992
     - path: data\processed\train_data.csv
       hash: md5
-      md5: 637f3709b44460480d998aff20ae7a5e
-      size: 453554
+      md5: c91070b226cb06f9b54abdf85ebb2cd4
+      size: 396218
     - path: src\features\features.py
       hash: md5
-      md5: 09d3ce52fece0777e91616f44d5b494e
-      size: 1333
+      md5: 24321acc266eb4061cc9d500365333bb
+      size: 1517
     outs:
     - path: data\interim\test_bow.csv
       hash: md5
-      md5: fe8680a8b20b873d55e63aec5b3d1aa2
-      size: 59114847
+      md5: fa00e22d6b682ad67a0cdc10b18423f5
+      size: 943433
     - path: data\interim\train_bow.csv
       hash: md5
-      md5: a6588e28a5d0219f84607ccadc322b2d
-      size: 236293455
+      md5: ffaa17764e3bd29777e64969606493e0
+      size: 2200277
   modelling:
     cmd: python src\modelling\modelling.py
     deps:
     - path: data\interim\train_bow.csv
       hash: md5
-      md5: a6588e28a5d0219f84607ccadc322b2d
-      size: 236293455
+      md5: ffaa17764e3bd29777e64969606493e0
+      size: 2200277
     - path: src\modelling\modelling.py
       hash: md5
-      md5: a63ca4f2536edae272876fb83ee7d740
-      size: 683
+      md5: d9d72bc61693708da51902f2d51aaeb8
+      size: 881
     outs:
     - path: models\random_forest_model.pkl
       hash: md5
-      md5: 168ba99528a2d8de18ea3b8dcf9e8edd
-      size: 55583873
+      md5: d7c991847a192e13c066f172f8a1efc6
+      size: 2554966
   model_evaluation:
     cmd: python src\modelling\model_evaluation.py
     deps:
     - path: data\interim\test_bow.csv
       hash: md5
-      md5: fe8680a8b20b873d55e63aec5b3d1aa2
-      size: 59114847
+      md5: fa00e22d6b682ad67a0cdc10b18423f5
+      size: 943433
     - path: models\random_forest_model.pkl
       hash: md5
-      md5: 168ba99528a2d8de18ea3b8dcf9e8edd
-      size: 55583873
+      md5: d7c991847a192e13c066f172f8a1efc6
+      size: 2554966
     - path: src\modelling\model_evaluation.py
       hash: md5
-      md5: 7b62884c68ea57fba5e655870ef96772
-      size: 1034
+      md5: 0f3501a19c337de3cf8468419360a3e1
+      size: 1049
     outs:
-    - path: reports\metrics.json
+    - path: reports\metrics_hyperparameter.json
       hash: md5
-      md5: 3fa3871d598e44538c866060f29cff57
-      size: 149
+      md5: 220395d9b02dc38ee9c9b8f145b4641b
+      size: 147

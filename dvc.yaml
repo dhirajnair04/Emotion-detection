@@ -38,6 +38,6 @@ stages:
     - src\modelling\model_evaluation.py
     - models\random_forest_model.pkl
     outs:
-    - reports\metrics.json
+    - reports\metrics_hyperparameter.json
 
 
