@@ -9,8 +9,8 @@ from sklearn.ensemble import RandomForestClassifier
 with open('params.yaml', 'r') as file:
     params=yaml.safe_load(file)
 
-# Load the training data (Bag of Words features)
-train_data = pd.read_csv("data/interim/train_bow.csv")
+# Load the training data (TF-IDF features)
+train_data = pd.read_csv("data/interim/train_tfidf.csv")
 
 # Separate features and target variable
 x_train = train_data.drop(columns=['label']).values

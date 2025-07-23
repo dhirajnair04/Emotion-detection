@@ -27,5 +27,5 @@ metrics_dict = {
 }
 
 # Save the metrics to a JSON file for reporting
-with open("reports/metrics_hyperparameter.json", "w") as f:
+with open("reports/metrics_tfidf.json", "w") as f:
     json.dump(metrics_dict, f, indent=4)
